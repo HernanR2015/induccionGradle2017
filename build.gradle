@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'jacoco'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+    baseName = 'proyecto1'
+    version =  '0.1.0'
+}
+
+
+repositories{
+	mavenCentral()
+}
+
+dependencies{
+	compile 'org.mockito:mockito-all:1.10.19'
+	compile 'org.apache.logging.log4j:log4j:2.10.0'
+	testCompile 'junit:junit:4.12'
+	
+}
+
