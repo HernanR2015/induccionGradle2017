@@ -2,14 +2,9 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'jacoco'
 
+version = '1.0'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-
-jar {
-    baseName = 'proyecto1'
-    version =  '0.1.0'
-}
-
 
 repositories{
 	mavenCentral()
@@ -20,5 +15,22 @@ dependencies{
 	compile 'org.apache.logging.log4j:log4j:2.10.0'
 	testCompile 'junit:junit:4.12'
 	
+	/* testCompile project.ext.junit
+	   testComppile project.ext.mockito
+	*/
+}
+jar {
+	manifest{
+	attributes 'Implementation-tittle' : 'proyecto1',
+				'Impementation-Version' : version
+	}
 }
 
+test {
+	jacoco{
+		append = false
+		destinationFile = file ("jacoco/jacocoTest.exec")
+	}
+	reports.junitXml.destination = file ("jacoco/test-results")
+}
+//jacocoTestReport.dependsOn(test)
